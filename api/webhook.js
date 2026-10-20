@@ -190,7 +190,7 @@ export default async function handler(req, res) {
     await fetch(ISSUE_URL, {
       method: 'PATCH',
       headers: { ...headers, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ body: JSON.stringify(db, null, 2) }),
+      body: JSON.stringify({ body: JSON.stringify(db) }),
     });
 
     return res.status(200).json({ ok: true, added, canceled });

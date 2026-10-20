@@ -5,8 +5,9 @@ import {
   AppSettings,
   ExpenseCategory,
 } from './types';
+import initialExpenses from './initialExpenses.json';
 
-const STORAGE_KEY = 'pastoral_expense_db_v3';
+const STORAGE_KEY = 'pastoral_expense_db_v4';
 
 const ENCODED_KEY = [
   110, 111, 118, 102, 118, 125, 113, 85, 57, 86, 129, 60, 77, 84, 113, 97, 76,
@@ -50,27 +51,8 @@ function getDefaultDb(): RawDb {
       yearlyBudget: 3000000,
       targetKeywords: ['하나7693'],
     },
-    expenses: [
-      {
-        id: 'exp-initial-1',
-        dateTime: '2026-10-10 19:30',
-        displayDate: '10/10 19:30',
-        year: '2026',
-        merchant: '카페하루',
-        amount: 6600,
-        category: '심방/다과',
-        memo: '',
-        rawSms: '[Web발신]\n하나7693승인 김*욱 6,600원 일시불 10/10 19:30  카페하루',
-      },
-    ],
-    scheduledExpenses: [
-      {
-        id: 'sched-initial-1',
-        year: '2026',
-        title: '달러 자동이체 예정 (예시)',
-        estimatedAmount: 30000,
-      },
-    ],
+    expenses: initialExpenses as ExpenseItem[],
+    scheduledExpenses: [],
   };
 }
 
@@ -113,7 +95,7 @@ async function saveCloudDb(db: RawDb): Promise<void> {
         ...getCloudHeaders(),
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ body: JSON.stringify(db, null, 2) }),
+      body: JSON.stringify({ body: JSON.stringify(db) }),
     });
   } catch (e) {
     console.warn('Cloud save failed:', e);

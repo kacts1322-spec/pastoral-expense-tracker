@@ -1,0 +1,1272 @@
+[
+  {
+    "id": "exp-2026-127",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "(주)우아한형제들",
+    "amount": 14300,
+    "category": "식비/교제",
+    "memo": "[C]청년학교 간식"
+  },
+  {
+    "id": "exp-2026-126",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 9000,
+    "category": "심방/다과",
+    "memo": "[B]이은표 심방"
+  },
+  {
+    "id": "exp-2026-125",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 4300,
+    "category": "도서/연구",
+    "memo": "[E]설교작성"
+  },
+  {
+    "id": "exp-2026-124",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "동락커피점",
+    "amount": 18000,
+    "category": "식비/교제",
+    "memo": "[C]목회자회의"
+  },
+  {
+    "id": "exp-2026-123",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 11700,
+    "category": "식비/교제",
+    "memo": "[C]목회자회의"
+  },
+  {
+    "id": "exp-2026-122",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "(주)클로버프렌즈",
+    "amount": 11300,
+    "category": "심방/다과",
+    "memo": "[B]김혜빈심방"
+  },
+  {
+    "id": "exp-2026-121",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 3300,
+    "category": "도서/연구",
+    "memo": "[E]설교작성"
+  },
+  {
+    "id": "exp-2026-120",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "주식회사 카카오",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": "[E]톡서랍구독"
+  },
+  {
+    "id": "exp-2026-119",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 3800,
+    "category": "도서/연구",
+    "memo": "[E]설교작성"
+  },
+  {
+    "id": "exp-2026-118",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "구글페이먼트코리아 유한회사",
+    "amount": 29000,
+    "category": "고정/구독",
+    "memo": "[E]제미나이 구독"
+  },
+  {
+    "id": "exp-2026-117",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 9300,
+    "category": "심방/다과",
+    "memo": "[B]임채민집사 심방"
+  },
+  {
+    "id": "exp-2026-116",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "ANTHROPIC* CLAUDE SUB",
+    "amount": 31104,
+    "category": "고정/구독",
+    "memo": "[E]클로드구독"
+  },
+  {
+    "id": "exp-2026-115",
+    "dateTime": "2026-09-23 12:00",
+    "displayDate": "09/23",
+    "year": "2026",
+    "merchant": "[E]SMS이용요금 07월분",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-114",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 4400,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-113",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 4100,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-112",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "주머니 프레시&공동구매 마트",
+    "amount": 19300,
+    "category": "식비/교제",
+    "memo": "[C]수련회임원비타민구입"
+  },
+  {
+    "id": "exp-2026-111",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 5800,
+    "category": "식비/교제",
+    "memo": "[C]새가족교육(커피)"
+  },
+  {
+    "id": "exp-2026-110",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 4700,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-109",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 2300,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-108",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "카오카츠",
+    "amount": 42000,
+    "category": "식비/교제",
+    "memo": "[C]임원회의(식사)"
+  },
+  {
+    "id": "exp-2026-107",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "롯데쇼핑(주)타임빌라스 수원",
+    "amount": 25600,
+    "category": "심방/다과",
+    "memo": "[B]유학생선물(송지호)"
+  },
+  {
+    "id": "exp-2026-106",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "HYGGEE COFFEE",
+    "amount": 23500,
+    "category": "식비/교제",
+    "memo": "[C]임원회의"
+  },
+  {
+    "id": "exp-2026-105",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 7400,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-104",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "주식회사 카카오",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": "[E]톡서랍구독"
+  },
+  {
+    "id": "exp-2026-103",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 14000,
+    "category": "식비/교제",
+    "memo": "[C]수련회준비(임원커피)"
+  },
+  {
+    "id": "exp-2026-102",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 9900,
+    "category": "심방/다과",
+    "memo": "[C]유년부성경학교준비 격려(커피)"
+  },
+  {
+    "id": "exp-2026-101",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "(주)아성다이소",
+    "amount": 11000,
+    "category": "심방/다과",
+    "memo": "[B]유학생선물,포장용품(송지호)"
+  },
+  {
+    "id": "exp-2026-100",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 11600,
+    "category": "식비/교제",
+    "memo": "[E]목회자회의(커피)"
+  },
+  {
+    "id": "exp-2026-099",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "용인시청",
+    "amount": 6600,
+    "category": "차량/교통",
+    "memo": "[C]임원회의(주차)"
+  },
+  {
+    "id": "exp-2026-098",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "구글페이먼트코리아 유한회사",
+    "amount": 29000,
+    "category": "고정/구독",
+    "memo": "[E]제미나이 구독"
+  },
+  {
+    "id": "exp-2026-097",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 28800,
+    "category": "식비/교제",
+    "memo": "[C]찬양팀수련회준비지원"
+  },
+  {
+    "id": "exp-2026-096",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 2900,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-095",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 8500,
+    "category": "심방/다과",
+    "memo": "[B]정이안형제심방(군대)"
+  },
+  {
+    "id": "exp-2026-094",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "ANTHROPIC* CLAUDE SUB",
+    "amount": 33172,
+    "category": "고정/구독",
+    "memo": "[E]클로드구독"
+  },
+  {
+    "id": "exp-2026-093",
+    "dateTime": "2026-08-24 12:00",
+    "displayDate": "08/24",
+    "year": "2026",
+    "merchant": "[E]SMS이용요금 06월분",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-092",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 3800,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-091",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "쿠팡",
+    "amount": 27490,
+    "category": "기타",
+    "memo": "[E]마우스 구매"
+  },
+  {
+    "id": "exp-2026-090",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "주식회사 카카오",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": "[E]톡서랍구독"
+  },
+  {
+    "id": "exp-2026-089",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 5300,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-088",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "이디아 용인신갈점",
+    "amount": 5100,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-087",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "아이파킹 주식회사",
+    "amount": 3300,
+    "category": "차량/교통",
+    "memo": "[B]전승욱 심방(주차)"
+  },
+  {
+    "id": "exp-2026-086",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 3800,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-085",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "어로프슬라이스피스(aloafs",
+    "amount": 12800,
+    "category": "심방/다과",
+    "memo": "[B]전승욱 심방"
+  },
+  {
+    "id": "exp-2026-084",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 7700,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-083",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "구글페이먼트코리아 유한회사",
+    "amount": 29000,
+    "category": "고정/구독",
+    "memo": "[E]제미나이 구독"
+  },
+  {
+    "id": "exp-2026-082",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 4300,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-081",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "ANTHROPIC* CLAUDE SUB",
+    "amount": 34509,
+    "category": "고정/구독",
+    "memo": "[E]클로드구독"
+  },
+  {
+    "id": "exp-2026-080",
+    "dateTime": "2026-07-23 12:00",
+    "displayDate": "07/23",
+    "year": "2026",
+    "merchant": "[E]SMS이용요금 05월분",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-079",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 4800,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-078",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 7300,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-077",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "카페스윗오븐",
+    "amount": 8000,
+    "category": "심방/다과",
+    "memo": "[B]정서언심방"
+  },
+  {
+    "id": "exp-2026-076",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "동백점담소사골순대",
+    "amount": 47500,
+    "category": "식비/교제",
+    "memo": "[C]교직원및봉사자식사"
+  },
+  {
+    "id": "exp-2026-075",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "클로버 커피 로스터스 & 베이커스",
+    "amount": 13800,
+    "category": "심방/다과",
+    "memo": "[B]신현학심방"
+  },
+  {
+    "id": "exp-2026-074",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "주식회사 카카오",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": "[E]톡서랍구독"
+  },
+  {
+    "id": "exp-2026-073",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 15600,
+    "category": "식비/교제",
+    "memo": "[C]청년새가족커피"
+  },
+  {
+    "id": "exp-2026-072",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "단운정",
+    "amount": 11600,
+    "category": "심방/다과",
+    "memo": "[B]지효숙심방"
+  },
+  {
+    "id": "exp-2026-071",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "롯데쇼핑(주)롯데몰수지점",
+    "amount": 66700,
+    "category": "식비/교제",
+    "memo": "[C]청년부임원회의"
+  },
+  {
+    "id": "exp-2026-070",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "롯데쇼핑(주)롯데몰수지점",
+    "amount": 18900,
+    "category": "식비/교제",
+    "memo": "[C]청년부임원회의"
+  },
+  {
+    "id": "exp-2026-069",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "롯데쇼핑(주)롯데몰수지점",
+    "amount": 16400,
+    "category": "식비/교제",
+    "memo": "[C]청년부임원회의"
+  },
+  {
+    "id": "exp-2026-068",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "스코프(특/베/잠실)",
+    "amount": 29300,
+    "category": "식비/교제",
+    "memo": "[C]신학남간식"
+  },
+  {
+    "id": "exp-2026-067",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 6300,
+    "category": "도서/연구",
+    "memo": "[E]설교준비"
+  },
+  {
+    "id": "exp-2026-066",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "아이파킹 주식회사",
+    "amount": 1000,
+    "category": "차량/교통",
+    "memo": "[B]김재석집사동생조문"
+  },
+  {
+    "id": "exp-2026-065",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "서래수",
+    "amount": 36000,
+    "category": "식비/교제",
+    "memo": "[C]전임교역자 회의"
+  },
+  {
+    "id": "exp-2026-064",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "구글페이먼트코리아 유한회사",
+    "amount": 29000,
+    "category": "고정/구독",
+    "memo": "[E]제미나이구독"
+  },
+  {
+    "id": "exp-2026-063",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "CLAUDE.AI SUBSCRIPTION",
+    "amount": 33800,
+    "category": "고정/구독",
+    "memo": "[E]클로드구독"
+  },
+  {
+    "id": "exp-2026-062",
+    "dateTime": "2026-06-23 12:00",
+    "displayDate": "06/23",
+    "year": "2026",
+    "merchant": "[E]SMS이용요금 04월분",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-061",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "[B]김영중집사(김은주, 지효숙)심방",
+    "amount": 24750,
+    "category": "심방/다과",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-060",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "카카오톡 톡서랍",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-059",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "교직원 커피",
+    "amount": 30000,
+    "category": "식비/교제",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-058",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "송남철장로 모친상 - 교역자 간식",
+    "amount": 26700,
+    "category": "심방/다과",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-057",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "수련회 답사팀 식사",
+    "amount": 30000,
+    "category": "식비/교제",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-056",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "설교준비용 도서 구입",
+    "amount": 49320,
+    "category": "도서/연구",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-055",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "AI 월구독료",
+    "amount": 29000,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-054",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "청년부 임원회의(카페)",
+    "amount": 46000,
+    "category": "식비/교제",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-053",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "청년부 임원회의(식사)",
+    "amount": 63000,
+    "category": "식비/교제",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-052",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "클로드AI 월구독료",
+    "amount": 33066,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-051",
+    "dateTime": "2026-05-26 12:00",
+    "displayDate": "05/26",
+    "year": "2026",
+    "merchant": "SMS이용요금",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-050",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "교직원 커피",
+    "amount": 50000,
+    "category": "식비/교제",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-049",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "심은호 심방",
+    "amount": 14700,
+    "category": "심방/다과",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-048",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "신원경집사 가정 심방",
+    "amount": 52000,
+    "category": "심방/다과",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-047",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "아브뉴프랑판교",
+    "amount": 4000,
+    "category": "차량/교통",
+    "memo": "이정은간사 환송 주차비"
+  },
+  {
+    "id": "exp-2026-046",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "카카오페이",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": "톡서랍구독료"
+  },
+  {
+    "id": "exp-2026-045",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "다이소",
+    "amount": 5000,
+    "category": "기타",
+    "memo": "사무용품 구입"
+  },
+  {
+    "id": "exp-2026-044",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "강정이닭",
+    "amount": 73500,
+    "category": "식비/교제",
+    "memo": "청년부 셀모임 지원"
+  },
+  {
+    "id": "exp-2026-043",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "카카오페이",
+    "amount": 15300,
+    "category": "심방/다과",
+    "memo": "윤하은전도사 격려"
+  },
+  {
+    "id": "exp-2026-042",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "투썸플레이스",
+    "amount": 15900,
+    "category": "기타",
+    "memo": "교역자 커피"
+  },
+  {
+    "id": "exp-2026-041",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "샤브궁",
+    "amount": 29800,
+    "category": "심방/다과",
+    "memo": "박성찬 심방"
+  },
+  {
+    "id": "exp-2026-040",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "카카오페이",
+    "amount": 11600,
+    "category": "심방/다과",
+    "memo": "강민지 심방"
+  },
+  {
+    "id": "exp-2026-039",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "은평성모병원",
+    "amount": 4000,
+    "category": "차량/교통",
+    "memo": "허주환 부친상 주차"
+  },
+  {
+    "id": "exp-2026-038",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "구글플레이",
+    "amount": 29750,
+    "category": "고정/구독",
+    "memo": "제미나이 월간구독료"
+  },
+  {
+    "id": "exp-2026-037",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "네이버페이",
+    "amount": 48800,
+    "category": "기타",
+    "memo": "청년부 예배용품(포인터)"
+  },
+  {
+    "id": "exp-2026-036",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "다이소",
+    "amount": 10000,
+    "category": "기타",
+    "memo": "사무실 정리용품 구입"
+  },
+  {
+    "id": "exp-2026-035",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "송지호 박현우 심방",
+    "amount": 3700,
+    "category": "심방/다과",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-034",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "송지호 박현우 심방",
+    "amount": 8600,
+    "category": "심방/다과",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-033",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "송지호 박현우 심방",
+    "amount": 5400,
+    "category": "심방/다과",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-032",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "클로드AI 월간구독료",
+    "amount": 33607,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-031",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "챗GPT 월간구독료",
+    "amount": 32923,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-030",
+    "dateTime": "2026-04-23 12:00",
+    "displayDate": "04/23",
+    "year": "2026",
+    "merchant": "SMS 이용료",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-029",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "[E]예배/강의/행정 준비 제미나이 월간결제",
+    "amount": -10290,
+    "category": "고정/구독",
+    "memo": "매출취소"
+  },
+  {
+    "id": "exp-2026-028",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "세컨드팬트리(Second Pantry)",
+    "amount": 15000,
+    "category": "심방/다과",
+    "memo": "[B]김은주권사 심방"
+  },
+  {
+    "id": "exp-2026-027",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "텐퍼센트 용인동백중앙점",
+    "amount": 19300,
+    "category": "식비/교제",
+    "memo": "[C]목회자회의 간식지원"
+  },
+  {
+    "id": "exp-2026-026",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "레이크라이크",
+    "amount": 9500,
+    "category": "심방/다과",
+    "memo": "[B]배성수 심방"
+  },
+  {
+    "id": "exp-2026-025",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "주식회사 카카오",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": "[E]카카오 톡서랍 월간결제"
+  },
+  {
+    "id": "exp-2026-024",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "투썸플레이스 동백중앙점",
+    "amount": 5200,
+    "category": "도서/연구",
+    "memo": "[E]청년부 설교준비"
+  },
+  {
+    "id": "exp-2026-023",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "아크앤북용인점",
+    "amount": 17000,
+    "category": "도서/연구",
+    "memo": "[C]청년부수련회 준비 도서구입"
+  },
+  {
+    "id": "exp-2026-022",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "르네상스 카페",
+    "amount": 13500,
+    "category": "심방/다과",
+    "memo": "[B]강민지청년 심방"
+  },
+  {
+    "id": "exp-2026-021",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "모월모일4PM",
+    "amount": 10300,
+    "category": "심방/다과",
+    "memo": "[B]박민기청년 심방"
+  },
+  {
+    "id": "exp-2026-020",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "선물하기",
+    "amount": 13900,
+    "category": "심방/다과",
+    "memo": "[B]이지성목사 심방 선물"
+  },
+  {
+    "id": "exp-2026-019",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "구글플레이먼트코리아 유한회사",
+    "amount": 29750,
+    "category": "고정/구독",
+    "memo": "[E]예배/강의/행정 준비 제미나이 월간결제"
+  },
+  {
+    "id": "exp-2026-018",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "OPENAI*CHATGPT SUBSCR",
+    "amount": 32576,
+    "category": "고정/구독",
+    "memo": "[E]예배/강의/행정 준비 GPT 월간결제"
+  },
+  {
+    "id": "exp-2026-017",
+    "dateTime": "2026-03-23 12:00",
+    "displayDate": "03/23",
+    "year": "2026",
+    "merchant": "[E]sms 이용요금",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-016",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "투썸플레이스 동백중앙점",
+    "amount": 4700,
+    "category": "도서/연구",
+    "memo": "[E]청년부 설교준비"
+  },
+  {
+    "id": "exp-2026-015",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "스위트밀(주)비어드파파",
+    "amount": 25000,
+    "category": "식비/교제",
+    "memo": "[C]교역자 회의 간식지원"
+  },
+  {
+    "id": "exp-2026-014",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "타임루비",
+    "amount": 7500,
+    "category": "도서/연구",
+    "memo": "[E]청년부 설교준비"
+  },
+  {
+    "id": "exp-2026-013",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "르네상스 카페",
+    "amount": 11500,
+    "category": "심방/다과",
+    "memo": "[B]김예준청년 심방"
+  },
+  {
+    "id": "exp-2026-012",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "주식회사 카카오",
+    "amount": 1900,
+    "category": "고정/구독",
+    "memo": "[E]카카오 톡서랍 월간결제"
+  },
+  {
+    "id": "exp-2026-011",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "이디야",
+    "amount": 20400,
+    "category": "식비/교제",
+    "memo": "[C]청년부 임원 회의 간식지원"
+  },
+  {
+    "id": "exp-2026-010",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "카페로우",
+    "amount": 7000,
+    "category": "도서/연구",
+    "memo": "[E]청년부 설교준비"
+  },
+  {
+    "id": "exp-2026-009",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "구글페이먼트코리아 유한회사",
+    "amount": 29000,
+    "category": "고정/구독",
+    "memo": "[E]예배/강의/행정 준비"
+  },
+  {
+    "id": "exp-2026-008",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "제빵소 꾸움",
+    "amount": 18900,
+    "category": "식비/교제",
+    "memo": "[C]임직사수련회 간식지원"
+  },
+  {
+    "id": "exp-2026-007",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "아이파킹 주식회사",
+    "amount": 2900,
+    "category": "차량/교통",
+    "memo": "[B]경서현청년 심방 주차비"
+  },
+  {
+    "id": "exp-2026-006",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "카페클린트더카페 분당용인점",
+    "amount": 11000,
+    "category": "심방/다과",
+    "memo": "[B]경서현청년 심방"
+  },
+  {
+    "id": "exp-2026-005",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "이디야 용인신갈점",
+    "amount": 4200,
+    "category": "도서/연구",
+    "memo": "[E]청년부 설교준비"
+  },
+  {
+    "id": "exp-2026-004",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "HIROSHIMAKOKUSAIKUKO",
+    "amount": 20174,
+    "category": "식비/교제",
+    "memo": "[C]교역자수련회(1/26~1/28 히로시마) 간식지원"
+  },
+  {
+    "id": "exp-2026-003",
+    "dateTime": "2026-02-23 12:00",
+    "displayDate": "02/23",
+    "year": "2026",
+    "merchant": "[E]sms 이용요금",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-002",
+    "dateTime": "2026-01-23 12:00",
+    "displayDate": "01/23",
+    "year": "2026",
+    "merchant": "[E]sms 이용요금",
+    "amount": 400,
+    "category": "고정/구독",
+    "memo": ""
+  },
+  {
+    "id": "exp-2026-001",
+    "dateTime": "2026-01-23 12:00",
+    "displayDate": "01/23",
+    "year": "2026",
+    "merchant": "선물하기",
+    "amount": 70200,
+    "category": "심방/다과",
+    "memo": "[B]나현준, 이정은간사 격려 선물"
+  }
+]
