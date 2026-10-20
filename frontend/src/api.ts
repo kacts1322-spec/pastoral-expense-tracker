@@ -136,27 +136,36 @@ function buildDashboardFromLocal(year = '2026'): DashboardData {
   };
 }
 
+const isLocalServer =
+  typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1');
+
 export const api = {
   getDashboard: async (year = '2026'): Promise<DashboardData> => {
-    try {
-      const res = await fetch(`/api/dashboard?year=${year}`);
-      if (res.ok) return await res.json();
-    } catch {
-      // Vercel 정적 배포 환경일 경우 브라우저 저장소 사용
+    if (isLocalServer) {
+      try {
+        const res = await fetch(`/api/dashboard?year=${year}`);
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
     return buildDashboardFromLocal(year);
   },
 
   submitSms: async (message: string, bypassFilter = false) => {
-    try {
-      const res = await fetch('/api/sms/webhook', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, bypassFilter }),
-      });
-      if (res.ok) return await res.json();
-    } catch {
-      // fallback
+    if (isLocalServer) {
+      try {
+        const res = await fetch('/api/sms/webhook', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, bypassFilter }),
+        });
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
 
     const db = getLocalDb();
@@ -193,15 +202,17 @@ export const api = {
     expenseId: string,
     scheduledId: string | null
   ) => {
-    try {
-      const res = await fetch(`/api/expenses/${expenseId}/replace-scheduled`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scheduledId }),
-      });
-      if (res.ok) return await res.json();
-    } catch {
-      // fallback
+    if (isLocalServer) {
+      try {
+        const res = await fetch(`/api/expenses/${expenseId}/replace-scheduled`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scheduledId }),
+        });
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
 
     const db = getLocalDb();
@@ -230,11 +241,13 @@ export const api = {
   },
 
   deleteExpense: async (id: string) => {
-    try {
-      const res = await fetch(`/api/expenses/${id}`, { method: 'DELETE' });
-      if (res.ok) return await res.json();
-    } catch {
-      // fallback
+    if (isLocalServer) {
+      try {
+        const res = await fetch(`/api/expenses/${id}`, { method: 'DELETE' });
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
     const db = getLocalDb();
     const target = db.expenses.find((e) => e.id === id);
@@ -248,15 +261,17 @@ export const api = {
   },
 
   addScheduled: async (title: string, estimatedAmount: number, year = '2026') => {
-    try {
-      const res = await fetch('/api/scheduled-expenses', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ year, title, estimatedAmount }),
-      });
-      if (res.ok) return await res.json();
-    } catch {
-      // fallback
+    if (isLocalServer) {
+      try {
+        const res = await fetch('/api/scheduled-expenses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ year, title, estimatedAmount }),
+        });
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
     const db = getLocalDb();
     const item: ScheduledExpense = {
@@ -271,15 +286,17 @@ export const api = {
   },
 
   updateScheduled: async (id: string, payload: Partial<ScheduledExpense>) => {
-    try {
-      const res = await fetch(`/api/scheduled-expenses/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (res.ok) return await res.json();
-    } catch {
-      // fallback
+    if (isLocalServer) {
+      try {
+        const res = await fetch(`/api/scheduled-expenses/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
     const db = getLocalDb();
     const idx = db.scheduledExpenses.findIndex((s) => s.id === id);
@@ -291,11 +308,13 @@ export const api = {
   },
 
   deleteScheduled: async (id: string) => {
-    try {
-      const res = await fetch(`/api/scheduled-expenses/${id}`, { method: 'DELETE' });
-      if (res.ok) return await res.json();
-    } catch {
-      // fallback
+    if (isLocalServer) {
+      try {
+        const res = await fetch(`/api/scheduled-expenses/${id}`, { method: 'DELETE' });
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
     const db = getLocalDb();
     for (const e of db.expenses) {
@@ -307,15 +326,17 @@ export const api = {
   },
 
   updateSettings: async (payload: Partial<AppSettings>) => {
-    try {
-      const res = await fetch('/api/settings', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (res.ok) return await res.json();
-    } catch {
-      // fallback
+    if (isLocalServer) {
+      try {
+        const res = await fetch('/api/settings', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) return await res.json();
+      } catch {
+        // fallback
+      }
     }
     const db = getLocalDb();
     db.settings = { ...db.settings, ...payload };

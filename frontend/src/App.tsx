@@ -1,22 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Trash2, Plus, Check, Edit2 } from 'lucide-react';
+import { Plus, Check, Trash2, Edit2, X } from 'lucide-react';
 import { api } from './api';
 import { DashboardData } from './types';
 
 export const App: React.FC = () => {
   const [data, setData] = useState<DashboardData | null>(null);
-  const [smsInput, setSmsInput] = useState('');
+
+  // 문자 붙여넣기 입력창 열림 상태
   const [showSmsBox, setShowSmsBox] = useState(false);
+  const [smsInput, setSmsInput] = useState('');
 
   // 1년 예산 수정 상태
   const [editingBudget, setEditingBudget] = useState(false);
   const [budgetText, setBudgetText] = useState('3000000');
 
-  // 자동이체 예정 추가 입력창 상태
+  // 자동이체 예정 추가 열림 상태
+  const [showAddSched, setShowAddSched] = useState(false);
   const [schedTitle, setSchedTitle] = useState('');
   const [schedAmount, setSchedAmount] = useState('');
 
-  // 자동이체 예정 수정 상태
+  // 자동이체 예정 금액 수정 상태
   const [editingSchedId, setEditingSchedId] = useState<string | null>(null);
   const [editSchedAmount, setEditSchedAmount] = useState('');
 
@@ -26,7 +29,7 @@ export const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // 아이폰 단축어에서 https://내주소.vercel.app/?sms=문자내용 으로 열었을 때 자동 등록
+    // 아이폰 단축어로 ?sms=문자내용 이 넘어왔을 때 즉시 자동 등록
     const params = new URLSearchParams(window.location.search);
     const smsFromUrl = params.get('sms');
     if (smsFromUrl) {
@@ -49,7 +52,7 @@ export const App: React.FC = () => {
     await loadData();
   };
 
-  // 2. 1년 예산 수정 저장
+  // 2. 1년 예산 저장
   const handleSaveBudget = async () => {
     const num = Number(budgetText.replace(/,/g, ''));
     if (!isNaN(num) && num >= 0) {
@@ -66,6 +69,7 @@ export const App: React.FC = () => {
     await api.addScheduled(schedTitle.trim(), Number(schedAmount), '2026');
     setSchedTitle('');
     setSchedAmount('');
+    setShowAddSched(false);
     await loadData();
   };
 
@@ -79,226 +83,268 @@ export const App: React.FC = () => {
     }
   };
 
-  // 5. 아래 실제 사용내역에서 체크해서 자동이체 예정 항목 대체하기
+  // 5. 실제 내역으로 자동이체 예정 금액 대체 토글
   const handleToggleReplaceScheduled = async (
     expenseId: string,
     currentReplacedId?: string
   ) => {
     if (!data) return;
 
-    // 이미 대체 연결된 상태면 체크 해제 (원래대로 복구)
     if (currentReplacedId) {
       await api.replaceScheduledWithExpense(expenseId, null);
       await loadData();
       return;
     }
 
-    // 아직 대체되지 않은 자동이체 예정 항목 찾기
     const pendingList = data.scheduledExpenses.filter((s) => !s.replacedByExpenseId);
     if (pendingList.length === 0) {
-      alert('대체할 자동이체 예정 항목이 위에 없습니다.');
+      alert('대체할 자동이체 예정 내역이 없습니다.');
       return;
     }
 
-    // 대기 중인 예정 항목이 1개면 바로 그 항목을 대체!
     if (pendingList.length === 1) {
       await api.replaceScheduledWithExpense(expenseId, pendingList[0].id);
       await loadData();
-      return;
     }
   };
 
   if (!data) {
-    return <div className="p-8 text-center text-slate-400">불러오는 중...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center text-slate-400 text-sm">
+        불러오는 중...
+      </div>
+    );
   }
 
   const pendingScheduledList = data.scheduledExpenses.filter(
     (s) => !s.replacedByExpenseId
   );
 
+  // 진행률 바 계산
+  const totalBudget = data.yearlyBudget || 1;
+  const usedPercent = Math.min(
+    100,
+    Math.max(0, ((data.actualSpent + data.pendingScheduledSpent) / totalBudget) * 100)
+  );
+
   return (
-    <div className="min-h-screen bg-slate-100 py-6 px-4">
-      <div className="max-w-2xl mx-auto space-y-5">
-        {/* 1. 맨 위: 1년 목회비 현황 (300만 원 기준) */}
-        <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200">
-          <div className="text-sm font-medium text-slate-500">남은 목회비 (2026년)</div>
-          <div className="text-3xl sm:text-4xl font-extrabold text-indigo-600 mt-1">
+    <div className="min-h-screen bg-[#f2f4f6] pb-16">
+      <div className="max-w-md mx-auto px-4 pt-5 space-y-4">
+        {/* 1. 상단 카드: 남은 목회비 (토스 스타일 모바일 카드) */}
+        <div className="bg-white rounded-3xl p-6 shadow-sm">
+          <div className="text-xs font-semibold text-slate-400">2026년 남은 목회비</div>
+          <div className="mt-1 text-[32px] leading-tight font-extrabold tracking-tight text-slate-900">
             {data.remainingBudget.toLocaleString()}원
           </div>
 
-          <div className="mt-5 pt-4 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
+          {/* 심플 게이지 바 */}
+          <div className="mt-4 w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+            <div
+              style={{ width: `${usedPercent}%` }}
+              className="h-full bg-blue-600 rounded-full transition-all duration-300"
+            />
+          </div>
+
+          {/* 가로로 찌그러지지 않는 깔끔한 3줄 요약 */}
+          <div className="mt-5 pt-4 border-t border-slate-100 space-y-2.5 text-sm">
             {/* 1년 예산 */}
-            <div className="bg-slate-50 p-3 rounded-xl">
-              <div className="text-xs text-slate-500">1년 예산</div>
+            <div className="flex items-center justify-between">
+              <span className="text-slate-500">1년 예산</span>
               {!editingBudget ? (
                 <button
                   onClick={() => {
                     setBudgetText(String(data.yearlyBudget));
                     setEditingBudget(true);
                   }}
-                  className="mt-1 font-bold text-sm sm:text-base text-slate-800 hover:text-indigo-600 inline-flex items-center gap-1"
+                  className="font-semibold text-slate-700 inline-flex items-center gap-1.5"
                 >
-                  {data.yearlyBudget.toLocaleString()}원
-                  <Edit2 className="w-3 h-3 text-slate-400" />
+                  <span>{data.yearlyBudget.toLocaleString()}원</span>
+                  <Edit2 className="w-3.5 h-3.5 text-slate-400" />
                 </button>
               ) : (
-                <div className="mt-1 flex items-center justify-center gap-1">
+                <div className="flex items-center gap-1.5">
                   <input
                     type="number"
                     value={budgetText}
                     onChange={(e) => setBudgetText(e.target.value)}
-                    className="w-24 px-1.5 py-0.5 text-xs border rounded"
+                    className="w-32 px-2.5 py-1 text-base border border-slate-300 rounded-lg text-right"
                   />
                   <button
                     onClick={handleSaveBudget}
-                    className="p-1 bg-indigo-600 text-white rounded"
+                    className="p-1.5 bg-blue-600 text-white rounded-lg"
                   >
-                    <Check className="w-3 h-3" />
+                    <Check className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setEditingBudget(false)}
+                    className="p-1.5 bg-slate-200 text-slate-600 rounded-lg"
+                  >
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
               )}
             </div>
 
-            {/* 실제 사용 */}
-            <div className="bg-slate-50 p-3 rounded-xl">
-              <div className="text-xs text-slate-500">실제 사용</div>
-              <div className="mt-1 font-bold text-sm sm:text-base text-slate-800">
+            {/* 실제 쓴 금액 */}
+            <div className="flex items-center justify-between">
+              <span className="text-slate-500">실제 사용</span>
+              <span className="font-bold text-slate-900">
                 {data.actualSpent.toLocaleString()}원
-              </div>
+              </span>
             </div>
 
             {/* 자동이체 예정 */}
-            <div className="bg-amber-50 p-3 rounded-xl">
-              <div className="text-xs text-amber-800">자동이체 예정</div>
-              <div className="mt-1 font-bold text-sm sm:text-base text-amber-900">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-500">자동이체 예정</span>
+              <span className="font-bold text-amber-600">
                 {data.pendingScheduledSpent.toLocaleString()}원
-              </div>
+              </span>
             </div>
           </div>
         </div>
 
-        {/* 2. 가운데: 자동이체 예정 (미리 반영) */}
-        <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200 space-y-3">
-          <div className="font-bold text-slate-800 text-base">자동이체 예정</div>
-
-          {/* 예정 추가 한 줄 입력 */}
-          <form onSubmit={handleAddScheduled} className="flex gap-2">
-            <input
-              type="text"
-              value={schedTitle}
-              onChange={(e) => setSchedTitle(e.target.value)}
-              placeholder="예: 달러 구독료"
-              className="flex-1 px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-500"
-            />
-            <input
-              type="number"
-              value={schedAmount}
-              onChange={(e) => setSchedAmount(e.target.value)}
-              placeholder="예상 금액(원)"
-              className="w-32 px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-500"
-            />
+        {/* 2. 중단 카드: 자동이체 예정 */}
+        <div className="bg-white rounded-3xl p-5 shadow-sm">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-bold text-slate-900">자동이체 예정</h2>
             <button
-              type="submit"
-              className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-xl shrink-0"
+              onClick={() => setShowAddSched(!showAddSched)}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-bold"
             >
+              <Plus className="w-3.5 h-3.5" />
               추가
             </button>
-          </form>
+          </div>
 
-          {/* 예정 목록 */}
-          <div className="divide-y divide-slate-100">
-            {data.scheduledExpenses.map((sched) => {
-              const replacedExp = data.expenses.find(
-                (e) => e.id === sched.replacedByExpenseId
-              );
-
-              return (
-                <div
-                  key={sched.id}
-                  className="py-2.5 flex items-center justify-between gap-2 text-sm"
+          {/* 예정 추가 폼 (버튼 눌렀을 때만 열림, 모바일에서 안 깨지게 세로 배치) */}
+          {showAddSched && (
+            <form
+              onSubmit={handleAddScheduled}
+              className="mt-3 p-3.5 bg-slate-50 rounded-2xl space-y-2.5"
+            >
+              <input
+                type="text"
+                value={schedTitle}
+                onChange={(e) => setSchedTitle(e.target.value)}
+                placeholder="내역 이름 (예: 달러 구독료)"
+                className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500"
+              />
+              <div className="flex gap-2">
+                <input
+                  type="number"
+                  value={schedAmount}
+                  onChange={(e) => setSchedAmount(e.target.value)}
+                  placeholder="예상 금액 (원)"
+                  className="flex-1 px-3.5 py-2.5 text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500"
+                />
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 bg-amber-500 text-white text-sm font-bold rounded-xl shrink-0"
                 >
-                  <div>
-                    <span
-                      className={`font-semibold ${
-                        replacedExp ? 'line-through text-slate-400' : 'text-slate-800'
-                      }`}
-                    >
-                      {sched.title}
-                    </span>
-                    {replacedExp && (
-                      <span className="ml-2 text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
-                        ✓ {replacedExp.merchant} ({replacedExp.amount.toLocaleString()}원)으로 대체됨
-                      </span>
-                    )}
-                  </div>
+                  저장
+                </button>
+              </div>
+            </form>
+          )}
 
-                  <div className="flex items-center gap-2">
-                    {editingSchedId === sched.id ? (
-                      <div className="flex items-center gap-1">
-                        <input
-                          type="number"
-                          value={editSchedAmount}
-                          onChange={(e) => setEditSchedAmount(e.target.value)}
-                          className="w-24 px-2 py-1 text-xs border rounded"
-                        />
-                        <button
-                          onClick={() => handleSaveScheduledAmount(sched.id)}
-                          className="p-1 bg-indigo-600 text-white rounded"
-                        >
-                          <Check className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    ) : (
-                      <span
-                        className={`font-bold ${
-                          replacedExp ? 'line-through text-slate-400' : 'text-amber-700'
+          {/* 자동이체 예정 리스트 */}
+          <div className="mt-3 divide-y divide-slate-100">
+            {data.scheduledExpenses.length === 0 ? (
+              <div className="py-4 text-center text-xs text-slate-400">
+                등록된 자동이체 예정 내역이 없습니다.
+              </div>
+            ) : (
+              data.scheduledExpenses.map((sched) => {
+                const replacedExp = data.expenses.find(
+                  (e) => e.id === sched.replacedByExpenseId
+                );
+
+                return (
+                  <div
+                    key={sched.id}
+                    className="py-3 flex items-center justify-between gap-2"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div
+                        className={`text-sm font-bold truncate ${
+                          replacedExp ? 'line-through text-slate-400' : 'text-slate-800'
                         }`}
                       >
-                        {sched.estimatedAmount.toLocaleString()}원
-                      </span>
-                    )}
+                        {sched.title}
+                      </div>
+                      {replacedExp && (
+                        <div className="text-xs font-semibold text-emerald-600 mt-0.5">
+                          ✓ {replacedExp.merchant} ({replacedExp.amount.toLocaleString()}원) 대체됨
+                        </div>
+                      )}
+                    </div>
 
-                    {!replacedExp && editingSchedId !== sched.id && (
+                    <div className="flex items-center gap-2 shrink-0">
+                      {editingSchedId === sched.id ? (
+                        <div className="flex items-center gap-1">
+                          <input
+                            type="number"
+                            value={editSchedAmount}
+                            onChange={(e) => setEditSchedAmount(e.target.value)}
+                            className="w-24 px-2 py-1 text-base border border-slate-300 rounded-lg text-right"
+                          />
+                          <button
+                            onClick={() => handleSaveScheduledAmount(sched.id)}
+                            className="p-1.5 bg-blue-600 text-white rounded-lg"
+                          >
+                            <Check className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ) : (
+                        <span
+                          className={`text-sm font-extrabold ${
+                            replacedExp ? 'line-through text-slate-300' : 'text-amber-600'
+                          }`}
+                        >
+                          {sched.estimatedAmount.toLocaleString()}원
+                        </span>
+                      )}
+
+                      {!replacedExp && editingSchedId !== sched.id && (
+                        <button
+                          onClick={() => {
+                            setEditingSchedId(sched.id);
+                            setEditSchedAmount(String(sched.estimatedAmount));
+                          }}
+                          className="p-1 text-slate-400"
+                        >
+                          <Edit2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+
                       <button
-                        onClick={() => {
-                          setEditingSchedId(sched.id);
-                          setEditSchedAmount(String(sched.estimatedAmount));
+                        onClick={async () => {
+                          await api.deleteScheduled(sched.id);
+                          await loadData();
                         }}
-                        className="p-1 text-slate-400 hover:text-slate-700"
-                        title="예상 금액 수정"
+                        className="p-1 text-slate-300 hover:text-rose-500"
                       >
-                        <Edit2 className="w-3.5 h-3.5" />
+                        <Trash2 className="w-4 h-4" />
                       </button>
-                    )}
-
-                    <button
-                      onClick={async () => {
-                        await api.deleteScheduled(sched.id);
-                        await loadData();
-                      }}
-                      className="p-1 text-slate-400 hover:text-rose-600"
-                      title="삭제"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </div>
 
-        {/* 3. 맨 아래: 사용 내역 (일시 · 사용처 · 금액 + 자동이체 대체 체크) */}
-        <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200 space-y-4">
+        {/* 3. 하단 카드: 사용 내역 (모바일 최적화 리스트 형태) */}
+        <div className="bg-white rounded-3xl p-5 shadow-sm">
           <div className="flex items-center justify-between">
-            <div className="font-bold text-slate-800 text-base">
-              사용 내역 ({data.expenses.length}건)
-            </div>
+            <h2 className="text-base font-bold text-slate-900">
+              사용 내역 ({data.expenses.length})
+            </h2>
             <button
               onClick={() => setShowSmsBox(!showSmsBox)}
-              className="inline-flex items-center gap-1 px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold rounded-xl"
+              className="inline-flex items-center gap-1 px-3.5 py-2 rounded-full bg-blue-600 text-white text-xs font-bold"
             >
-              <Plus className="w-4 h-4" />
+              <Plus className="w-3.5 h-3.5" />
               문자 붙여넣기
             </button>
           </div>
@@ -307,126 +353,129 @@ export const App: React.FC = () => {
           {showSmsBox && (
             <form
               onSubmit={handleAddSms}
-              className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2"
+              className="mt-3 p-3.5 bg-slate-50 rounded-2xl space-y-2.5"
             >
               <textarea
                 rows={3}
                 value={smsInput}
                 onChange={(e) => setSmsInput(e.target.value)}
                 placeholder="[Web발신] 하나7693승인 김*욱 6,600원 일시불 10/10 19:30  카페하루"
-                className="w-full p-2.5 text-sm bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                className="w-full p-3 text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500"
               />
               <div className="flex justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setShowSmsBox(false)}
-                  className="px-3 py-1.5 text-xs text-slate-600"
+                  className="px-3.5 py-2 text-xs font-semibold text-slate-500"
                 >
                   취소
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-lg"
+                  className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl"
                 >
-                  등록
+                  내역에 넣기
                 </button>
               </div>
             </form>
           )}
 
-          {/* 내역 표: 일시 | 사용처 | 금액 | 자동이체 대체 */}
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="border-b border-slate-200 text-xs text-slate-500">
-                <th className="py-2.5 px-2">일시</th>
-                <th className="py-2.5 px-2">사용처</th>
-                <th className="py-2.5 px-2 text-right">금액</th>
-                <th className="py-2.5 px-2 text-center">자동이체 대체</th>
-                <th className="py-2.5 px-1 w-8"></th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 text-sm">
-              {data.expenses.map((item) => {
+          {/* 모바일에서 글자가 절대 깨지지 않는 토스식 2줄 리스트 */}
+          <div className="mt-3 divide-y divide-slate-100">
+            {data.expenses.length === 0 ? (
+              <div className="py-8 text-center text-xs text-slate-400">
+                아직 사용 내역이 없습니다.
+              </div>
+            ) : (
+              data.expenses.map((item) => {
                 const isReplacing = Boolean(item.replacedScheduledId);
                 const linkedSched = data.scheduledExpenses.find(
                   (s) => s.id === item.replacedScheduledId
                 );
 
                 return (
-                  <tr key={item.id} className="hover:bg-slate-50">
-                    {/* 일시 */}
-                    <td className="py-3 px-2 text-xs sm:text-sm text-slate-600 font-mono whitespace-nowrap">
-                      {item.displayDate}
-                    </td>
+                  <div
+                    key={item.id}
+                    className="py-3.5 flex items-center justify-between gap-3"
+                  >
+                    {/* 왼쪽: 사용처 (크게) + 일시 (아래에 작게) */}
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[15px] font-bold text-slate-900 truncate">
+                        {item.merchant}
+                      </div>
+                      <div className="text-xs text-slate-400 mt-0.5">
+                        {item.displayDate}
+                      </div>
+                    </div>
 
-                    {/* 사용처 */}
-                    <td className="py-3 px-2 font-bold text-slate-900">
-                      {item.merchant}
-                    </td>
+                    {/* 오른쪽: 금액 + 자동이체 대체 버튼 + 삭제 */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      <div className="text-right">
+                        <div className="text-[15px] font-extrabold text-slate-900">
+                          {item.amount.toLocaleString()}원
+                        </div>
 
-                    {/* 금액 */}
-                    <td className="py-3 px-2 text-right font-extrabold text-slate-900 whitespace-nowrap">
-                      {item.amount.toLocaleString()}원
-                    </td>
+                        {/* 자동이체 대체 체크/버튼 (금액 바로 아래에 깔끔하게 배치) */}
+                        <div className="mt-1 flex justify-end">
+                          {isReplacing ? (
+                            <button
+                              onClick={() =>
+                                handleToggleReplaceScheduled(
+                                  item.id,
+                                  item.replacedScheduledId
+                                )
+                              }
+                              className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 text-[11px] font-bold"
+                            >
+                              ✓ {linkedSched ? linkedSched.title : '자동이체 대체됨'}
+                            </button>
+                          ) : pendingScheduledList.length === 1 ? (
+                            <button
+                              onClick={() => handleToggleReplaceScheduled(item.id)}
+                              className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px] font-semibold"
+                            >
+                              ⬜ 자동이체 대체
+                            </button>
+                          ) : pendingScheduledList.length > 1 ? (
+                            <select
+                              value=""
+                              onChange={async (e) => {
+                                if (e.target.value) {
+                                  await api.replaceScheduledWithExpense(
+                                    item.id,
+                                    e.target.value
+                                  );
+                                  await loadData();
+                                }
+                              }}
+                              className="text-[11px] bg-slate-100 text-slate-600 rounded-md px-1.5 py-0.5"
+                            >
+                              <option value="">⬜ 자동이체 대체</option>
+                              {pendingScheduledList.map((s) => (
+                                <option key={s.id} value={s.id}>
+                                  {s.title} ({s.estimatedAmount.toLocaleString()}원)
+                                </option>
+                              ))}
+                            </select>
+                          ) : null}
+                        </div>
+                      </div>
 
-                    {/* 자동이체 예정 대체 체크 / 선택 */}
-                    <td className="py-3 px-2 text-center whitespace-nowrap">
-                      {isReplacing ? (
-                        <button
-                          onClick={() =>
-                            handleToggleReplaceScheduled(item.id, item.replacedScheduledId)
-                          }
-                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-bold"
-                          title="클릭하면 대체 해제"
-                        >
-                          ☑ {linkedSched ? linkedSched.title : '대체됨'}
-                        </button>
-                      ) : pendingScheduledList.length <= 1 ? (
-                        <input
-                          type="checkbox"
-                          checked={false}
-                          onChange={() => handleToggleReplaceScheduled(item.id)}
-                          className="w-4 h-4 accent-indigo-600 rounded cursor-pointer"
-                          title="체크하면 위 자동이체 예정 금액을 이 금액으로 대체합니다"
-                        />
-                      ) : (
-                        <select
-                          value=""
-                          onChange={async (e) => {
-                            if (e.target.value) {
-                              await api.replaceScheduledWithExpense(item.id, e.target.value);
-                              await loadData();
-                            }
-                          }}
-                          className="text-xs border border-slate-300 rounded px-1.5 py-1 bg-white text-slate-700"
-                        >
-                          <option value="">예정 선택...</option>
-                          {pendingScheduledList.map((s) => (
-                            <option key={s.id} value={s.id}>
-                              {s.title} ({s.estimatedAmount.toLocaleString()}원)
-                            </option>
-                          ))}
-                        </select>
-                      )}
-                    </td>
-
-                    {/* 삭제 */}
-                    <td className="py-3 px-1 text-right">
                       <button
                         onClick={async () => {
                           await api.deleteExpense(item.id);
                           await loadData();
                         }}
-                        className="p-1 text-slate-300 hover:text-rose-600"
+                        className="p-1.5 text-slate-300 hover:text-rose-500"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
-                    </td>
-                  </tr>
+                    </div>
+                  </div>
                 );
-              })}
-            </tbody>
-          </table>
+              })
+            )}
+          </div>
         </div>
       </div>
     </div>
