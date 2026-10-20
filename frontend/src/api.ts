@@ -8,7 +8,6 @@ import {
 
 const STORAGE_KEY = 'pastoral_expense_db_v3';
 
-// 클라우드 동기화 엔드포인트 (홈 화면에 추가한 앱 <-> 사파리 <-> PC 실시간 공유용)
 const ENCODED_KEY = [
   110, 111, 118, 102, 118, 125, 113, 85, 57, 86, 129, 60, 77, 84, 113, 97, 76,
   126, 121, 117, 82, 75, 73, 119, 127, 89, 60, 81, 112, 77, 91, 96, 57, 77, 55,
@@ -75,10 +74,6 @@ function getDefaultDb(): RawDb {
   };
 }
 
-/**
- * 클라우드 저장소에서 최신 DB를 읽어오고 로컬 캐시도 갱신합니다.
- * - 왜 필요한가: 아이폰 '홈 화면에 추가'한 앱과 사파리(단축어 실행 창)가 같은 데이터를 공유하기 위함입니다.
- */
 async function fetchCloudDb(): Promise<RawDb> {
   try {
     const res = await fetch(`${CLOUD_URL}?t=${Date.now()}`, {
@@ -88,7 +83,6 @@ async function fetchCloudDb(): Promise<RawDb> {
     if (res.ok) {
       const issue = await res.json();
       const parsed = JSON.parse(issue.body) as RawDb;
-      // 카테고리 없는 기존 내역 보정
       parsed.expenses = (parsed.expenses || []).map((e) => ({
         ...e,
         category: e.category || guessCategory(e.merchant),
@@ -126,6 +120,40 @@ async function saveCloudDb(db: RawDb): Promise<void> {
   }
 }
 
+/**
+ * 여러 개의 문자를 한꺼번에 복사/붙여넣기 했을 때 개별 문자로 분리하는 함수
+ * - 아이폰 메시지 앱에서 여러 개를 선택해 복사해도 [Web발신] 또는 줄바꿈 기준으로 모두 분리합니다.
+ */
+export function splitBulkSmsInBrowser(bulkText: string): string[] {
+  if (!bulkText || !bulkText.trim()) return [];
+
+  const chunksByHeader = bulkText
+    .split(/(?=\[(?:Web|웹|국외)발신\])/i)
+    .map((c) => c.trim())
+    .filter(Boolean);
+
+  const results: string[] = [];
+  for (const chunk of chunksByHeader) {
+    const lines = chunk
+      .replace(/^\[(?:Web|웹|국외)발신\]\s*/i, '')
+      .split(/\r?\n/)
+      .map((l) => l.trim())
+      .filter(Boolean);
+
+    const linesWithBoth = lines.filter(
+      (line) => /\d{1,2}\/\d{1,2}/.test(line) && /[\d,]+\s*원/.test(line)
+    );
+    if (linesWithBoth.length > 1) {
+      for (const line of linesWithBoth) {
+        results.push(`[Web발신]\n${line}`);
+      }
+    } else {
+      results.push(chunk);
+    }
+  }
+  return results;
+}
+
 export function parseSmsInBrowser(rawSms: string, keywords: string[]) {
   const cleaned = rawSms.trim();
   if (!cleaned) return null;
@@ -146,9 +174,8 @@ export function parseSmsInBrowser(rawSms: string, keywords: string[]) {
   const amountMatch = body.match(/([+-]?[\d,]+)\s*원/);
   if (!amountMatch) return null;
 
-  const num = parseInt(amountMatch[1].replace(/,/g, ''), 10);
+  const num = Math.abs(parseInt(amountMatch[1].replace(/,/g, ''), 10));
   if (isNaN(num)) return null;
-  const amount = isCancel && num > 0 ? -num : num;
 
   const dateTimeRegex =
     /(1[0-2]|0?[1-9])\/(3[01]|[12]\d|0?[1-9])(?!\d)(?:\s+([012]?\d:[0-5]\d))?/;
@@ -170,7 +197,7 @@ export function parseSmsInBrowser(rawSms: string, keywords: string[]) {
     merchant = body
       .slice(dateMatch.index + dateMatch[0].length)
       .replace(/([+-]?[\d,]+)\s*원/g, ' ')
-      .replace(/\b(?:일시불|할부|\d+개월|승인|취소|출금|체크)\b/g, ' ')
+      .replace(/\b(?:일시불|할부|\d+개월|승인취소|승인|취소|출금|체크)\b/g, ' ')
       .trim();
   }
   merchant = merchant.replace(/\s+/g, ' ').trim() || '기타사용처';
@@ -180,7 +207,8 @@ export function parseSmsInBrowser(rawSms: string, keywords: string[]) {
     displayDate: `${mm}/${dd} ${time}`,
     year,
     merchant,
-    amount,
+    amount: num,
+    isCancel,
     category: guessCategory(merchant),
     memo: '',
     rawSms: cleaned,
@@ -217,18 +245,47 @@ export const api = {
 
   submitSms: async (message: string, bypassFilter = false) => {
     const db = await fetchCloudDb();
-    const chunks = message
-      .split(/(?=\[(?:Web|웹|국외)발신\])/i)
-      .map((c) => c.trim())
-      .filter(Boolean);
+    const chunks = splitBulkSmsInBrowser(message);
+
+    // 여러 문자를 한꺼번에 붙여넣었을 때: 승인 문자를 먼저 처리하고 취소 문자를 뒤에 처리하여
+    // 같은 묶음 안에 결제와 취소가 함께 들어있어도 정확히 삭제되도록 정렬합니다.
+    const parsedItems = chunks
+      .map((c) =>
+        parseSmsInBrowser(c, bypassFilter ? [] : db.settings.targetKeywords)
+      )
+      .filter((p): p is NonNullable<typeof p> => p !== null)
+      .sort((a, b) => Number(a.isCancel) - Number(b.isCancel));
 
     let addedCount = 0;
-    for (const chunk of chunks) {
-      const parsed = parseSmsInBrowser(
-        chunk,
-        bypassFilter ? [] : db.settings.targetKeywords
-      );
-      if (!parsed) continue;
+    let canceledCount = 0;
+
+    for (const parsed of parsedItems) {
+      // 승인취소/취소 문자인 경우: 이전에 결제한 동일 내역을 찾아 자동으로 삭제 처리!
+      if (parsed.isCancel) {
+        const normMerchant = parsed.merchant.replace(/\s+/g, '');
+        let targetIdx = db.expenses.findIndex(
+          (e) =>
+            e.amount === parsed.amount &&
+            e.merchant.replace(/\s+/g, '') === normMerchant
+        );
+        if (targetIdx === -1) {
+          targetIdx = db.expenses.findIndex((e) => e.amount === parsed.amount);
+        }
+
+        if (targetIdx !== -1) {
+          const removed = db.expenses[targetIdx];
+          if (removed.replacedScheduledId) {
+            const sched = db.scheduledExpenses.find(
+              (s) => s.id === removed.replacedScheduledId
+            );
+            if (sched) sched.replacedByExpenseId = undefined;
+          }
+          db.expenses.splice(targetIdx, 1);
+          canceledCount++;
+        }
+        continue;
+      }
+
       const dup = db.expenses.find(
         (e) =>
           e.dateTime === parsed.dateTime &&
@@ -236,15 +293,18 @@ export const api = {
           e.merchant === parsed.merchant
       );
       if (dup) continue;
+
+      const { isCancel, ...itemData } = parsed;
       db.expenses.unshift({
         id: `exp-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-        ...parsed,
+        ...itemData,
       });
       addedCount++;
     }
+
     db.expenses.sort((a, b) => b.dateTime.localeCompare(a.dateTime));
     await saveCloudDb(db);
-    return { success: true, addedCount };
+    return { success: true, addedCount, canceledCount };
   },
 
   addManualExpense: async (payload: {

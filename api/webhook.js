@@ -1,4 +1,4 @@
-// Vercel Serverless Function: 아이폰 단축어에서 백그라운드(URL 내용 가져오기)로 호출 시 클라우드 DB에 즉시 저장
+// Vercel Serverless Function: 아이폰 단축어 호출 시 클라우드 DB에 저장 및 취소문자 자동 삭제 처리
 const ENCODED_KEY = [
   110, 111, 118, 102, 118, 125, 113, 85, 57, 86, 129, 60, 77, 84, 113, 97, 76,
   126, 121, 117, 82, 75, 73, 119, 127, 89, 60, 81, 112, 77, 91, 96, 57, 77, 55,
@@ -26,6 +26,35 @@ function guessCategory(merchant) {
   return '기타';
 }
 
+function splitBulkSms(bulkText) {
+  if (!bulkText || !bulkText.trim()) return [];
+  const chunksByHeader = bulkText
+    .split(/(?=\[(?:Web|웹|국외)발신\])/i)
+    .map((c) => c.trim())
+    .filter(Boolean);
+
+  const results = [];
+  for (const chunk of chunksByHeader) {
+    const lines = chunk
+      .replace(/^\[(?:Web|웹|국외)발신\]\s*/i, '')
+      .split(/\r?\n/)
+      .map((l) => l.trim())
+      .filter(Boolean);
+
+    const linesWithBoth = lines.filter(
+      (line) => /\d{1,2}\/\d{1,2}/.test(line) && /[\d,]+\s*원/.test(line)
+    );
+    if (linesWithBoth.length > 1) {
+      for (const line of linesWithBoth) {
+        results.push(`[Web발신]\n${line}`);
+      }
+    } else {
+      results.push(chunk);
+    }
+  }
+  return results;
+}
+
 function parseSms(rawSms, keywords) {
   const cleaned = (rawSms || '').trim();
   if (!cleaned) return null;
@@ -46,9 +75,8 @@ function parseSms(rawSms, keywords) {
   const amountMatch = body.match(/([+-]?[\d,]+)\s*원/);
   if (!amountMatch) return null;
 
-  const num = parseInt(amountMatch[1].replace(/,/g, ''), 10);
+  const num = Math.abs(parseInt(amountMatch[1].replace(/,/g, ''), 10));
   if (isNaN(num)) return null;
-  const amount = isCancel && num > 0 ? -num : num;
 
   const dateTimeRegex =
     /(1[0-2]|0?[1-9])\/(3[01]|[12]\d|0?[1-9])(?!\d)(?:\s+([012]?\d:[0-5]\d))?/;
@@ -70,7 +98,7 @@ function parseSms(rawSms, keywords) {
     merchant = body
       .slice(dateMatch.index + dateMatch[0].length)
       .replace(/([+-]?[\d,]+)\s*원/g, ' ')
-      .replace(/\b(?:일시불|할부|\d+개월|승인|취소|출금|체크)\b/g, ' ')
+      .replace(/\b(?:일시불|할부|\d+개월|승인취소|승인|취소|출금|체크)\b/g, ' ')
       .trim();
   }
   merchant = merchant.replace(/\s+/g, ' ').trim() || '기타사용처';
@@ -80,7 +108,8 @@ function parseSms(rawSms, keywords) {
     displayDate: `${mm}/${dd} ${time}`,
     year,
     merchant,
-    amount,
+    amount: num,
+    isCancel,
     category: guessCategory(merchant),
     memo: '',
     rawSms: cleaned,
@@ -105,15 +134,41 @@ export default async function handler(req, res) {
     const issue = await getRes.json();
     const db = JSON.parse(issue.body);
 
-    const chunks = String(sms)
-      .split(/(?=\[(?:Web|웹|국외)발신\])/i)
-      .map((c) => c.trim())
-      .filter(Boolean);
-
+    const chunks = splitBulkSms(String(sms));
     let added = 0;
+    let canceled = 0;
+
     for (const chunk of chunks) {
       const parsed = parseSms(chunk, db.settings?.targetKeywords || ['하나7693']);
       if (!parsed) continue;
+
+      // 취소 문자인 경우: 이전에 결제된 동일 사용처 + 동일 금액 내역을 찾아 자동 삭제!
+      if (parsed.isCancel) {
+        const normMerchant = parsed.merchant.replace(/\s+/g, '');
+        let targetIdx = db.expenses.findIndex(
+          (e) =>
+            e.amount === parsed.amount &&
+            e.merchant.replace(/\s+/g, '') === normMerchant
+        );
+        // 만약 취소 문자에 사용처가 다르게 표기되었더라도 동일 금액의 최근 결제가 있으면 삭제
+        if (targetIdx === -1) {
+          targetIdx = db.expenses.findIndex((e) => e.amount === parsed.amount);
+        }
+
+        if (targetIdx !== -1) {
+          const removed = db.expenses[targetIdx];
+          if (removed.replacedScheduledId) {
+            const sched = (db.scheduledExpenses || []).find(
+              (s) => s.id === removed.replacedScheduledId
+            );
+            if (sched) sched.replacedByExpenseId = undefined;
+          }
+          db.expenses.splice(targetIdx, 1);
+          canceled++;
+        }
+        continue;
+      }
+
       const dup = db.expenses.find(
         (e) =>
           e.dateTime === parsed.dateTime &&
@@ -122,9 +177,10 @@ export default async function handler(req, res) {
       );
       if (dup) continue;
 
+      const { isCancel, ...itemData } = parsed;
       db.expenses.unshift({
         id: `exp-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-        ...parsed,
+        ...itemData,
       });
       added++;
     }
@@ -137,7 +193,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({ body: JSON.stringify(db, null, 2) }),
     });
 
-    return res.status(200).json({ ok: true, added });
+    return res.status(200).json({ ok: true, added, canceled });
   } catch (err) {
     return res.status(500).json({ ok: false, error: String(err) });
   }
