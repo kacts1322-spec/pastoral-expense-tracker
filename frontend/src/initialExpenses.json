@@ -77,7 +77,8 @@
     "merchant": "주식회사 카카오",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": "[E]톡서랍구독"
+    "memo": "[E]톡서랍구독",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-119",
@@ -97,7 +98,8 @@
     "merchant": "구글페이먼트코리아 유한회사",
     "amount": 29000,
     "category": "고정/구독",
-    "memo": "[E]제미나이 구독"
+    "memo": "[E]제미나이 구독",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-117",
@@ -117,7 +119,8 @@
     "merchant": "ANTHROPIC* CLAUDE SUB",
     "amount": 31104,
     "category": "고정/구독",
-    "memo": "[E]클로드구독"
+    "memo": "[E]클로드구독",
+    "replacedScheduledId": "sched-claude"
   },
   {
     "id": "exp-2026-115",
@@ -127,7 +130,8 @@
     "merchant": "[E]SMS이용요금 07월분",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-114",
@@ -237,7 +241,8 @@
     "merchant": "주식회사 카카오",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": "[E]톡서랍구독"
+    "memo": "[E]톡서랍구독",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-103",
@@ -297,7 +302,8 @@
     "merchant": "구글페이먼트코리아 유한회사",
     "amount": 29000,
     "category": "고정/구독",
-    "memo": "[E]제미나이 구독"
+    "memo": "[E]제미나이 구독",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-097",
@@ -337,7 +343,8 @@
     "merchant": "ANTHROPIC* CLAUDE SUB",
     "amount": 33172,
     "category": "고정/구독",
-    "memo": "[E]클로드구독"
+    "memo": "[E]클로드구독",
+    "replacedScheduledId": "sched-claude"
   },
   {
     "id": "exp-2026-093",
@@ -347,7 +354,8 @@
     "merchant": "[E]SMS이용요금 06월분",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-092",
@@ -377,7 +385,8 @@
     "merchant": "주식회사 카카오",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": "[E]톡서랍구독"
+    "memo": "[E]톡서랍구독",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-089",
@@ -447,7 +456,8 @@
     "merchant": "구글페이먼트코리아 유한회사",
     "amount": 29000,
     "category": "고정/구독",
-    "memo": "[E]제미나이 구독"
+    "memo": "[E]제미나이 구독",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-082",
@@ -467,7 +477,8 @@
     "merchant": "ANTHROPIC* CLAUDE SUB",
     "amount": 34509,
     "category": "고정/구독",
-    "memo": "[E]클로드구독"
+    "memo": "[E]클로드구독",
+    "replacedScheduledId": "sched-claude"
   },
   {
     "id": "exp-2026-080",
@@ -477,7 +488,8 @@
     "merchant": "[E]SMS이용요금 05월분",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-079",
@@ -537,7 +549,8 @@
     "merchant": "주식회사 카카오",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": "[E]톡서랍구독"
+    "memo": "[E]톡서랍구독",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-073",
@@ -637,7 +650,8 @@
     "merchant": "구글페이먼트코리아 유한회사",
     "amount": 29000,
     "category": "고정/구독",
-    "memo": "[E]제미나이구독"
+    "memo": "[E]제미나이구독",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-063",
@@ -647,7 +661,8 @@
     "merchant": "CLAUDE.AI SUBSCRIPTION",
     "amount": 33800,
     "category": "고정/구독",
-    "memo": "[E]클로드구독"
+    "memo": "[E]클로드구독",
+    "replacedScheduledId": "sched-claude"
   },
   {
     "id": "exp-2026-062",
@@ -657,7 +672,8 @@
     "merchant": "[E]SMS이용요금 04월분",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-061",
@@ -677,7 +693,8 @@
     "merchant": "카카오톡 톡서랍",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-059",
@@ -727,7 +744,8 @@
     "merchant": "AI 월구독료",
     "amount": 29000,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-054",
@@ -757,7 +775,8 @@
     "merchant": "클로드AI 월구독료",
     "amount": 33066,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-claude"
   },
   {
     "id": "exp-2026-051",
@@ -767,7 +786,8 @@
     "merchant": "SMS이용요금",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-050",
@@ -817,7 +837,8 @@
     "merchant": "카카오페이",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": "톡서랍구독료"
+    "memo": "톡서랍구독료",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-045",
@@ -897,7 +918,8 @@
     "merchant": "구글플레이",
     "amount": 29750,
     "category": "고정/구독",
-    "memo": "제미나이 월간구독료"
+    "memo": "제미나이 월간구독료",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-037",
@@ -957,7 +979,8 @@
     "merchant": "클로드AI 월간구독료",
     "amount": 33607,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-claude"
   },
   {
     "id": "exp-2026-031",
@@ -977,7 +1000,8 @@
     "merchant": "SMS 이용료",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-029",
@@ -1027,7 +1051,8 @@
     "merchant": "주식회사 카카오",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": "[E]카카오 톡서랍 월간결제"
+    "memo": "[E]카카오 톡서랍 월간결제",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-024",
@@ -1087,7 +1112,8 @@
     "merchant": "구글플레이먼트코리아 유한회사",
     "amount": 29750,
     "category": "고정/구독",
-    "memo": "[E]예배/강의/행정 준비 제미나이 월간결제"
+    "memo": "[E]예배/강의/행정 준비 제미나이 월간결제",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-018",
@@ -1107,7 +1133,8 @@
     "merchant": "[E]sms 이용요금",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-016",
@@ -1157,7 +1184,8 @@
     "merchant": "주식회사 카카오",
     "amount": 1900,
     "category": "고정/구독",
-    "memo": "[E]카카오 톡서랍 월간결제"
+    "memo": "[E]카카오 톡서랍 월간결제",
+    "replacedScheduledId": "sched-kakao"
   },
   {
     "id": "exp-2026-011",
@@ -1187,7 +1215,8 @@
     "merchant": "구글페이먼트코리아 유한회사",
     "amount": 29000,
     "category": "고정/구독",
-    "memo": "[E]예배/강의/행정 준비"
+    "memo": "[E]예배/강의/행정 준비",
+    "replacedScheduledId": "sched-gemini"
   },
   {
     "id": "exp-2026-008",
@@ -1247,7 +1276,8 @@
     "merchant": "[E]sms 이용요금",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-002",
@@ -1257,7 +1287,8 @@
     "merchant": "[E]sms 이용요금",
     "amount": 400,
     "category": "고정/구독",
-    "memo": ""
+    "memo": "",
+    "replacedScheduledId": "sched-sms"
   },
   {
     "id": "exp-2026-001",
