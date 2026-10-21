@@ -84,6 +84,7 @@ export const DEFAULT_SCHEDULED_EXPENSES: ScheduledExpense[] = [
       '07': 'exp-2026-083',
       '08': 'exp-2026-098',
       '09': 'exp-2026-118',
+      '10': 'exp-1792544068215-7ix8',
     },
   },
   {
@@ -101,6 +102,7 @@ export const DEFAULT_SCHEDULED_EXPENSES: ScheduledExpense[] = [
       '07': 'exp-2026-090',
       '08': 'exp-2026-104',
       '09': 'exp-2026-120',
+      '10': 'exp-1792544097369-39dm',
     },
   },
   {

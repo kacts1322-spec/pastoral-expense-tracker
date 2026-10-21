@@ -1,5 +1,106 @@
 [
   {
+    "id": "exp-1792544097369-39dm",
+    "dateTime": "2026-10-18 09:02",
+    "displayDate": "10/18 09:02",
+    "year": "2026",
+    "merchant": "주식회사카카오",
+    "amount": 1900,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 1,900원 일시불 10/18 09:02  주식회사카카오",
+    "replacedScheduledId": "sched-kakao"
+  },
+  {
+    "id": "exp-1792543873345-226k",
+    "dateTime": "2026-10-16 20:33",
+    "displayDate": "10/16 20:33",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 4300,
+    "category": "심방/다과",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 4,300원 일시불 10/16 20:33  카페하루"
+  },
+  {
+    "id": "exp-1792543860443-wftr",
+    "dateTime": "2026-10-10 19:30",
+    "displayDate": "10/10 19:30",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 6600,
+    "category": "심방/다과",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 6,600원 일시불 10/10 19:30  카페하루"
+  },
+  {
+    "id": "exp-1792543848564-scev",
+    "dateTime": "2026-10-07 11:16",
+    "displayDate": "10/07 11:16",
+    "year": "2026",
+    "merchant": "레이크카페광교SK뷰레이크34F",
+    "amount": 13500,
+    "category": "심방/다과",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 13,500원 일시불 10/07 11:16  레이크카페광교SK뷰레이크34F"
+  },
+  {
+    "id": "exp-1792544068215-7ix8",
+    "dateTime": "2026-10-05 17:22",
+    "displayDate": "10/05 17:22",
+    "year": "2026",
+    "merchant": "구글페이먼트코리아유한회사",
+    "amount": 29000,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 29,000원 일시불 10/05 17:22  구글페이먼트코리아유한회사",
+    "replacedScheduledId": "sched-gemini"
+  },
+  {
+    "id": "exp-1792543836480-lclr",
+    "dateTime": "2026-10-04 19:58",
+    "displayDate": "10/04 19:58",
+    "year": "2026",
+    "merchant": "네이버페이",
+    "amount": 52800,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 52,800원 일시불 10/04 19:58  네이버페이"
+  },
+  {
+    "id": "exp-1792543824500-vu2s",
+    "dateTime": "2026-09-30 19:46",
+    "displayDate": "09/30 19:46",
+    "year": "2026",
+    "merchant": "선물하기_카카오페이",
+    "amount": 48600,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 48,600원 일시불 09/30 19:46  선물하기_카카오페이"
+  },
+  {
+    "id": "exp-1792543810777-dov3",
+    "dateTime": "2026-09-26 21:20",
+    "displayDate": "09/26 21:20",
+    "year": "2026",
+    "merchant": "주식회사컬리페이(Kurlypaylnc.)",
+    "amount": 33320,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 33,320원 일시불 09/26 21:20  주식회사컬리페이(Kurlypaylnc.)"
+  },
+  {
+    "id": "exp-1792543793061-9j7r",
+    "dateTime": "2026-09-25 19:14",
+    "displayDate": "09/25 19:14",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 7700,
+    "category": "심방/다과",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 7,700원 일시불 09/25 19:14  카페하루"
+  },
+  {
     "id": "exp-2026-127",
     "dateTime": "2026-09-23 12:00",
     "displayDate": "09/23",
@@ -132,6 +233,83 @@
     "category": "고정/구독",
     "memo": "",
     "replacedScheduledId": "sched-sms"
+  },
+  {
+    "id": "exp-1792543765003-nzqk",
+    "dateTime": "2026-09-21 21:18",
+    "displayDate": "09/21 21:18",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 5300,
+    "category": "심방/다과",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 5,300원 일시불 09/21 21:18  카페하루"
+  },
+  {
+    "id": "exp-1792543638433-gmym",
+    "dateTime": "2026-09-15 15:56",
+    "displayDate": "09/15 15:56",
+    "year": "2026",
+    "merchant": "세븐일레븐용인동백본점",
+    "amount": 3000,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 3,000원 일시불 09/15 15:56  세븐일레븐용인동백본점"
+  },
+  {
+    "id": "exp-1792543625020-jwam",
+    "dateTime": "2026-09-15 12:52",
+    "displayDate": "09/15 12:52",
+    "year": "2026",
+    "merchant": "레이크라이크",
+    "amount": 14000,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 14,000원 일시불 09/15 12:52  레이크라이크"
+  },
+  {
+    "id": "exp-1792543612667-vw0j",
+    "dateTime": "2026-09-14 21:11",
+    "displayDate": "09/14 21:11",
+    "year": "2026",
+    "merchant": "선물하기_카카오페이",
+    "amount": 11900,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 11,900원 일시불 09/14 21:11  선물하기_카카오페이"
+  },
+  {
+    "id": "exp-1792543600854-40yg",
+    "dateTime": "2026-09-11 22:51",
+    "displayDate": "09/11 22:51",
+    "year": "2026",
+    "merchant": "카페하루",
+    "amount": 5700,
+    "category": "심방/다과",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 5,700원 일시불 09/11 22:51  카페하루"
+  },
+  {
+    "id": "exp-1792543563066-lzdw",
+    "dateTime": "2026-09-06 13:33",
+    "displayDate": "09/06 13:33",
+    "year": "2026",
+    "merchant": "발트페이먼츠",
+    "amount": 21900,
+    "category": "기타",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 21,900원 일시불 09/06 13:33  발트페이먼츠"
+  },
+  {
+    "id": "exp-1792543531665-aig1",
+    "dateTime": "2026-09-06 07:27",
+    "displayDate": "09/06 07:27",
+    "year": "2026",
+    "merchant": "㈜알라딘커뮤니케이션",
+    "amount": 47500,
+    "category": "도서/연구",
+    "memo": "",
+    "rawSms": "[Web발신]\n하나7693승인 김*욱 47,500원 일시불 09/06 07:27  ㈜알라딘커뮤니케이션"
   },
   {
     "id": "exp-2026-114",
